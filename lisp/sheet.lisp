@@ -91,8 +91,6 @@
     :%view-module +module-name+
     :%view-module-version +module-version+))
 
-(jupyter-widgets:register-widget cell)
-
 
 (defclass sheet (jupyter-widgets:dom-widget)
   ((rows
@@ -160,8 +158,6 @@
     :%view-module-version +module-version+
     :layout (make-instance 'jupyter-widgets:layout :width "auto" :height "auto")))
 
-(jupyter-widgets:register-widget sheet)
-
 
 (defun cell (instance row column)
   (or (find-if (lambda (cell)
@@ -190,5 +186,3 @@
     :%view-module +module-name+
     :%view-module-version +module-version+))
 
-(jupyter-widgets:register-widget renderer)
-  
