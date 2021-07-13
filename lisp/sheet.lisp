@@ -1,9 +1,9 @@
 (in-package :sheet)
 
 
-(defclass cell (jupyter-widgets:widget)
+(jupyter/widgets:defwidget cell (jupyter/widgets:widget)
   ((value
-     :accessor jupyter-widgets:widget-value
+     :accessor jupyter/widgets:widget-value
      :initarg :value
      :initform :null
      :trait :json)
@@ -83,7 +83,6 @@
      :initarg :time-format
      :initform "h:mm:ss a"
      :trait :string))
-  (:metaclass jupyter-widgets:trait-metaclass)
   (:default-initargs
     :%model-name "CellRangeModel"
     :%model-module +module-name+
@@ -92,7 +91,7 @@
     :%view-module-version +module-version+))
 
 
-(defclass sheet (jupyter-widgets:dom-widget)
+(jupyter/widgets:defwidget sheet (jupyter/widgets:dom-widget)
   ((rows
      :accessor rows
      :initarg :rows
@@ -148,7 +147,6 @@
      :initarg :search-token
      :initform ""
      :trait :string))
-  (:metaclass jupyter-widgets:trait-metaclass)
   (:default-initargs
     :%model-name "SheetModel"
     :%model-module +module-name+
@@ -156,7 +154,7 @@
     :%view-name "SheetView"
     :%view-module +module-name+
     :%view-module-version +module-version+
-    :layout (make-instance 'jupyter-widgets:layout :width "auto" :height "auto")))
+    :layout (make-instance 'jupyter/widgets:layout :width "auto" :height "auto")))
 
 
 (defun cell (instance row column)
@@ -167,7 +165,7 @@
       (error "no cell was previously created for (row, column) = (~A, ~A)" row column)))
 
 
-(defclass renderer (jupyter-widgets:widget)
+(jupyter/widgets:defwidget renderer (jupyter/widgets:widget)
   ((name
      :accessor name
      :initarg :name
@@ -178,7 +176,6 @@
      :initarg :renderer
      :initform ""
      :trait :string))
-  (:metaclass jupyter-widgets:trait-metaclass)
   (:default-initargs
     :%model-name "RendererModel"
     :%model-module +module-name+
